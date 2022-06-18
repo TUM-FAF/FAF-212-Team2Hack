@@ -7,7 +7,7 @@ import logoSrc from '../../assets/images/logo.png';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
-import { pink, blue } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
 	'& .MuiBadge-badge': {
@@ -45,7 +45,7 @@ const Profile: React.FC<ProfileProps> = ({}) => {
 		<>
 			<div className={ 'profile flex flex-col h-full w-full' }>
 				<div className={ 'flex h-1/6 w-full justify-center align-center' }>
-					<Button className={ 'w-full h-full' }>
+					<Button className={ 'w-full h-full' } href={ '/' }>
 						<img src={ logoSrc } alt={ 'wired' } style={ { width: '48px', height: '48px' } }/>
 					</Button>
 				</div>

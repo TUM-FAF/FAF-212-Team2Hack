@@ -62,12 +62,6 @@ const messages: Message[] = [
 		timestamp: 0
 	},
 	{
-		id: '11',
-		uid: 'user-2',
-		content: 'While containers can be nested, most layouts do not require a nested container.',
-		timestamp: 0
-	},
-	{
 		id: '12',
 		uid: 'user-2',
 		content: 'While containers can be nested, most layouts do not require a nested container.',
@@ -75,6 +69,12 @@ const messages: Message[] = [
 	},
 	{
 		id: '13',
+		uid: 'user-2',
+		content: 'While containers can be nested, most layouts do not require a nested container.',
+		timestamp: 0
+	},
+	{
+		id: '14',
 		uid: 'user-2',
 		content: 'While containers can be nested, most layouts do not require a nested container.',
 		timestamp: 0

@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Feed from './pages/feed';
 import Profile from './pages/profile';
 import Chat from './pages/chat';
+import { useAppDispatch, useAppSelector } from './app/hooks';
+// import { fetchMessages } from './features/messages/messagesSlice';
 
 const App: React.FC = () => {
+	const messagesStatus = useAppSelector<'rejected' | 'idle' | 'pending' | 'fulfilled'>(state => state.messageState.status);
+	const dispatch = useAppDispatch();
+	
+	// useEffect(() => {
+	// 	if (messagesStatus === 'idle')
+	// 		dispatch(fetchMessages());
+	// }, [dispatch, messagesStatus]);
+	
 	return (
 		<div className="grid grid-cols-12 min-h-screen max-h-screen text-center">
 			<div className="col-span-2">
