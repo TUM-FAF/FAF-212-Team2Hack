@@ -6,7 +6,7 @@ import Chat from './pages/chat';
 
 const App: React.FC = () => {
 	return (
-		<div className="grid grid-cols-12 min-h-screen text-center">
+		<div className="grid grid-cols-12 min-h-screen max-h-screen text-center">
 			<div className="col-span-2">
 				<Profile/>
 			</div>

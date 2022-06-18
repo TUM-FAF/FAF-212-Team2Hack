@@ -1,4 +1,6 @@
-const messages: MessageProps[] = [
+import Message from './Message';
+
+const messages: Message[] = [
 	{
 		id: '1',
 		uid: 'user-1',
