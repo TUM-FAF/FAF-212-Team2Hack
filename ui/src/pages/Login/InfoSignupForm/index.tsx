@@ -7,6 +7,7 @@ import { changeUser } from '../../../features/user/userSlice';
 import { useAppDispatch } from '../../../app/hooks';
 
 const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, username, password }) => {
+	document.querySelector<HTMLButtonElement>('.btn-1').hidden = 'true';
 	const dispatch = useAppDispatch();
 	const [school, setSchool] = useState<string>('');
 	const [university, setUniversity] = useState<string>('');
@@ -46,7 +47,7 @@ const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, us
 	};
 	
 	return (
-		<div className={'w-screen h-screen flex justify-center items-center relative top-0'} style={ { backgroundColor: '#ffffff'}}>
+		<div className={'w-screen h-screen flex justify-center items-center'}>
 			<Box display="flex" flexDirection="column" gap="4px">
 				<Input placeholder={ 'SCHOOL' } value={ school } onChange={ handleSchoolChange }/>
 				<Input placeholder={ 'UNIVERSITY' } value={ university } onChange={ handleUniChange }/>

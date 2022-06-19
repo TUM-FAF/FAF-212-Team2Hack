@@ -52,7 +52,7 @@ const Login: React.FC = () => {
 	return (
 		<div className={ 'w-screen h-screen flex justify-center items-center' }>
 			<div className={'flex flex-col'}>
-				<Button onClick={ () => {
+				<Button className={'btn-1'} onClick={ () => {
 					setRegister(prev => !prev);
 				} }>
 					go to { register ? 'login' : 'register' }
