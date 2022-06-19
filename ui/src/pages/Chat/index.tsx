@@ -13,7 +13,7 @@ const Chat: React.FC<ChatProps> = () => {
 	
 	return (
 		<div className={ 'wrapper h-screen max-h-screen' }>
-			<div className={ 'chat-header h-1/10 flex items-center justify-start border-b ' }>
+			<div className={ 'Chat-header h-1/10 flex items-center justify-start border-b ' }>
 				<Avatar
 					alt={ chatUser.name }
 					src={ chatUserSrc }

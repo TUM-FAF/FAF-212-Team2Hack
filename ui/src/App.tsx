@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Feed from './pages/feed';
-import Profile from './pages/profile';
-import Chat from './pages/chat';
+import Feed from './pages/Feed';
+import Profile from './pages/Profile';
+import Chat from './pages/Chat';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 // import { fetchMessages } from './features/messages/messagesSlice';
 

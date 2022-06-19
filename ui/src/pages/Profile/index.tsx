@@ -43,7 +43,7 @@ const Profile: React.FC<ProfileProps> = ({}) => {
 	
 	return (
 		<>
-			<div className={ 'profile flex flex-col h-full w-full' }>
+			<div className={ 'Profile flex flex-col h-full w-full' }>
 				<div className={ 'flex h-1/6 w-full justify-center align-center' }>
 					<Button className={ 'w-full h-full' } href={ '/' }>
 						<img src={ logoSrc } alt={ 'wired' } style={ { width: '48px', height: '48px' } }/>
@@ -57,7 +57,7 @@ const Profile: React.FC<ProfileProps> = ({}) => {
 					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>5</Button>
 				</div>
 				<div className={ 'flex h-1/6 w-full justify-center' }>
-					<Button className={ 'profile-button-wrap w-full h-full' } href={ '/' }>
+					<Button className={ 'Profile-button-wrap w-full h-full' } href={ '/' }>
 						<div className={ 'profile-button' }>
 							<StyledBadge
 								overlap="circular"
