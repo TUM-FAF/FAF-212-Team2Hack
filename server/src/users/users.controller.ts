@@ -20,6 +20,7 @@ import {diskStorage} from 'multer'
 import path from "path";
 import {v4 as uuidv4} from 'uuid'
 import {JwtAuthGuard} from "../auth/jwt-auth.guard";
+import {User} from "./entities/user.entity";
 
 
 export const storage = {
@@ -34,7 +35,6 @@ export const storage = {
     })
 }
 
-@UseGuards(JwtAuthGuard)
 @Controller('users')
 export class UsersController {
     constructor(private readonly usersService: UsersService) {
@@ -46,26 +46,31 @@ export class UsersController {
         await this.usersService.create(createUserDto);
     }
 
-    @Get('')
-    findAll() {
-        return this.usersService.findAll();
+    @UseGuards(JwtAuthGuard)
+    @Get('suggestions')
+    findAll(@Body() user: User) {
+        return this.usersService.findAll(user);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get(':id')
     findOne(@Param('username') username: string) {
         return this.usersService.findOne(username);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Patch(':id')
     update(@Param('id') id: string, @Body() payload: UpdateUserDto) {
         return this.usersService.update(id, payload);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete(':id')
     delete(@Param('id') id: string) {
         return this.usersService.delete(id);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Post('upload')
     @UseInterceptors(FileInterceptor('file', storage))
     uploadPicture(@UploadedFile() file): Observable<Object> {

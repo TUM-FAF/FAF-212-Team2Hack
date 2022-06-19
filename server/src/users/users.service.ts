@@ -14,15 +14,20 @@ export class UsersService {
         await this.usersRepository.save(createUserDto);
     }
 
-    findAll(): Promise<User[]> {
-        return this.usersRepository.find();
+    async findAll(user: User): Promise<User[]> {
+        const query = this.usersRepository.createQueryBuilder('user')
+            .where('user.username != :username AND (user.university = :university OR user.school = :school)', {
+                username: user.username, university: user.university,
+                school: user.school
+            });
+        return await query.getMany();
     }
 
-    findOne(username: string):  Promise<User> {
+    findOne(username: string): Promise<User> {
         return this.usersRepository.findOne({where: {username: username}});
     }
 
-    findById(id: string):  Promise<User> {
+    findById(id: string): Promise<User> {
         return this.usersRepository.findOne({where: {uid: id}});
     }
 
@@ -31,6 +36,6 @@ export class UsersService {
     }
 
     async delete(id: string): Promise<void> {
-      await this.usersRepository.delete(id);
+        await this.usersRepository.delete(id);
     }
 }
