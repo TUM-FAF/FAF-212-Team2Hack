@@ -50,7 +50,7 @@ const InputField: React.FC<InputProps> = () => {
 			<Button
 				variant={ 'contained' }
 				className={ 'h-12' }
-				sx={ { borderRadius: '0', height: '100%' } }
+				sx={ { borderRadius: '0', height: '100%', width: '20%' } }
 				onClick={ handleButtonClick }
 			>
 				<Send/>
