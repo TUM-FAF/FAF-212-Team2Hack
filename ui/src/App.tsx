@@ -5,6 +5,7 @@ import Profile from './pages/profile';
 import Chat from './pages/chat';
 import {useAppDispatch, useAppSelector} from './app/hooks';
 import Login from "./pages/Login";
+import Settings from "./components/Settings";
 // import { fetchMessages } from './features/messages/messagesSlice';
 
 const App: React.FC = () => {
@@ -27,7 +28,8 @@ const App: React.FC = () => {
                         </div>
                         <div className="col-span-7 border-l-2 border-r-2 border-gray-200 text-center">
                             <Routes>
-                                <Route path="/" element={<Feed/>}/>
+                                <Route path="/feed" element={<Feed/>}/>
+                                <Route path="/settings" element={<Settings/>}/>
                                 <Route path="/profile" element={<Profile/>}/>
                                 <Route path="/chat" element={<Chat/>}/>
                             </Routes>

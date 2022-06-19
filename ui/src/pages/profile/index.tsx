@@ -51,10 +51,11 @@ const Profile: React.FC<ProfileProps> = ({}) => {
 	const [visibility, setVisibility] = useState(false);
 
 	const handleOnClick = () => navigate('/');
+	const goToFeed = () => navigate('/feed');
+
 
 	return (
 		<>
-			{visibility && <Settings setVisibility={() => {setVisibility(false)}}/>}
 			<div className={ 'profile flex flex-col h-full w-full' }>
 				<div className={ 'flex h-1/6 w-full justify-center align-center' }>
 					<Button className={ 'w-full h-full' } onClick={handleOnClick}>
@@ -62,11 +63,11 @@ const Profile: React.FC<ProfileProps> = ({}) => {
 					</Button>
 				</div>
 				<div className={ 'flex h-4/6 w-full flex-col items-center justify-evenly' }>
+					<Button startIcon={ <ChatBubbleOutlineIcon/> } className={ 'h-8 w-9/12' } onClick={goToFeed}>Feed</Button>
 					<Button startIcon={ <GroupIcon/> } className={ 'h-8 w-9/12' }>Friends</Button>
-					<Button startIcon={ <LogoutIcon/> } className={ 'h-8 w-9/12' } onClick={() => {document.location.reload()}}>Log out</Button>
-					<Button startIcon={ <ChatBubbleOutlineIcon/> } className={ 'h-8 w-9/12' }>Feed</Button>
 					<Button startIcon={ <InfoIcon/> } className={ 'h-8 w-9/12' }>About</Button>
-					<Button startIcon={ <SettingsIcon/> } className={ 'h-8 w-9/12' } onClick={()=>{setVisibility(prev => !prev)}}>Settings</Button>
+					<Button startIcon={ <SettingsIcon/> } className={ 'h-8 w-9/12' } onClick={()=> navigate('/settings')}>Settings</Button>
+					<Button startIcon={ <LogoutIcon/> } className={ 'h-8 w-9/12' } onClick={() => {document.location.reload()}}>Log out</Button>
 				</div>
 				<div className={ 'flex h-1/6 w-full justify-center' }>
 					<Button className={ 'profile-button-wrap w-full h-full' }  onClick={handleOnClick}>

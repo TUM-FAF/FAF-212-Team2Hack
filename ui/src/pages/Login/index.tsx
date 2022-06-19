@@ -59,7 +59,7 @@ const Login: React.FC = () => {
 				</Button>
 				{ register ? <SignupForm/> : <Box display="flex" flexDirection="column" gap="4px">
 					<Input placeholder={ 'LOGIN' } onChange={ handleUsernameChange }/>
-					<Input placeholder={ 'PASSWORD' } onChange={ handlePasswordChange }/>
+					<Input placeholder={ 'PASSWORD' } type="password" onChange={ handlePasswordChange }/>
 					<Button onClick={ handleOnLogin }>Login</Button>
 				</Box> }
 			</div>

@@ -16,7 +16,7 @@ const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, us
 
 	const navigate = useNavigate();
 
-	const handleRegisterSuccess = () => navigate('')
+	const handleRegisterSuccess = () => navigate('/feed')
 
 	const handleUniChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		setUniversity(e.target.value);
@@ -41,8 +41,7 @@ const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, us
 				password, school, university, clubs, connections: []
 			});
 
-			console.log(result)
-			
+
 			if (result.data.username) {
 				console.log("res")
 				dispatch(changeUser(result.data as User));
