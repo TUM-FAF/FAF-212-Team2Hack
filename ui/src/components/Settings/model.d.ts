@@ -1,0 +1,3 @@
+interface SettingsProps {
+    setVisibility(): void;
+}

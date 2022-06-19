@@ -1,10 +1,9 @@
-import {Injectable, Param} from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
 import {CreateUserDto} from './dto/create-user.dto';
 import {UpdateUserDto} from './dto/update-user.dto';
 import {InjectRepository} from "@nestjs/typeorm";
 import {User} from "./entities/user.entity";
 import {Repository, UpdateResult} from "typeorm";
-import {SuggestionsType} from "./users.controller";
 
 @Injectable()
 export class UsersService {
@@ -21,7 +20,6 @@ export class UsersService {
                 username: username, university: university,
                 school: school
             });
-        console.log(await query.getMany())
         return await query.getMany();
     }
 

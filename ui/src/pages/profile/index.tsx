@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Profile.scss';
 import { Button, Avatar } from '@mui/material';
 import userSrc from '../../assets/images/user.svg';
@@ -14,6 +14,7 @@ import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import { blue } from '@mui/material/colors';
 import {useNavigate} from "react-router-dom";
+import Settings from "../../components/Settings";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
 	'& .MuiBadge-badge': {
@@ -47,11 +48,13 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Profile: React.FC<ProfileProps> = ({}) => {
 	const user = useAppSelector(state => state.userState.user);
 	const navigate = useNavigate();
+	const [visibility, setVisibility] = useState(false);
 
 	const handleOnClick = () => navigate('/');
 
 	return (
 		<>
+			{visibility && <Settings setVisibility={() => {setVisibility(false)}}/>}
 			<div className={ 'profile flex flex-col h-full w-full' }>
 				<div className={ 'flex h-1/6 w-full justify-center align-center' }>
 					<Button className={ 'w-full h-full' } onClick={handleOnClick}>
@@ -60,10 +63,10 @@ const Profile: React.FC<ProfileProps> = ({}) => {
 				</div>
 				<div className={ 'flex h-4/6 w-full flex-col items-center justify-evenly' }>
 					<Button startIcon={ <GroupIcon/> } className={ 'h-8 w-9/12' }>Friends</Button>
-					<Button startIcon={ <LogoutIcon/> } className={ 'h-8 w-9/12' }>Log out</Button>
+					<Button startIcon={ <LogoutIcon/> } className={ 'h-8 w-9/12' } onClick={() => {document.location.reload()}}>Log out</Button>
 					<Button startIcon={ <ChatBubbleOutlineIcon/> } className={ 'h-8 w-9/12' }>Feed</Button>
 					<Button startIcon={ <InfoIcon/> } className={ 'h-8 w-9/12' }>About</Button>
-					<Button startIcon={ <SettingsIcon/> } className={ 'h-8 w-9/12' }>Settings</Button>
+					<Button startIcon={ <SettingsIcon/> } className={ 'h-8 w-9/12' } onClick={()=>{setVisibility(prev => !prev)}}>Settings</Button>
 				</div>
 				<div className={ 'flex h-1/6 w-full justify-center' }>
 					<Button className={ 'profile-button-wrap w-full h-full' }  onClick={handleOnClick}>

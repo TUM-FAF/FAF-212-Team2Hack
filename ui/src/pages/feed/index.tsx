@@ -57,10 +57,9 @@ const Feed: React.FC<FeedProps> = () => {
 
     return (
         <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-            <Button onClick={handleSelectedCard(selectedCard - 1)}>prev</Button>
+            <Button onClick={handleSelectedCard(selectedCard - 1)} sx={{marginRight: "15px"}}>prev</Button>
             <ProfileCard profile={cards[selectedCard]}/>
-            <Button onClick={handleSelectedCard(selectedCard + 1)}>next</Button>
-
+            <Button onClick={handleSelectedCard(selectedCard + 1)} sx={{marginLeft: "15px"}}>next</Button>
         </Box>
     )
 }
