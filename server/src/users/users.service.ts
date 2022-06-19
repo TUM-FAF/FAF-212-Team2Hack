@@ -18,8 +18,8 @@ export class UsersService {
         return this.usersRepository.find();
     }
 
-    findOne(id: string):  Promise<User> {
-        return this.usersRepository.findOne({where: {uid: id}});
+    findOne(username: string):  Promise<User> {
+        return this.usersRepository.findOne({where: {username: username}});
     }
 
     update(id: string, payload: UpdateUserDto): Promise<UpdateResult> {

@@ -5,6 +5,12 @@ export class User {
     @PrimaryGeneratedColumn("uuid")
     uid: string = '';
 
+    @Column({ unique: true, length: 20})
+    username: string
+
+    @Column({ length: 20})
+    password: string
+
     @Column({nullable: true})
     profileImage: string;
 
