@@ -5,6 +5,11 @@ import userSrc from '../../assets/images/user.svg';
 import { useAppSelector } from '../../app/hooks';
 import logoSrc from '../../assets/images/logo.png';
 import DeleteIcon from '@mui/icons-material/Delete';
+import FeedIcon from '@mui/icons-material/Feed';
+import LogoutIcon from '@mui/icons-material/Logout';
+import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import InfoIcon from '@mui/icons-material/Info';
+import GroupIcon from '@mui/icons-material/Group';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import { blue } from '@mui/material/colors';
@@ -50,11 +55,11 @@ const Profile: React.FC<ProfileProps> = ({}) => {
 					</Button>
 				</div>
 				<div className={ 'flex h-4/6 w-full flex-col items-center justify-evenly' }>
-					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>1</Button>
-					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>2</Button>
-					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>3</Button>
-					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>4</Button>
-					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>5</Button>
+					<Button startIcon={ <FeedIcon/> } className={ 'h-8 w-9/12' }>Feed</Button>
+					<Button startIcon={ <FolderSharedIcon/> } className={ 'h-8 w-9/12' }>Profile</Button>
+					<Button startIcon={ <GroupIcon/> } className={ 'h-8 w-9/12' }>Connections</Button>
+					<Button startIcon={ <LogoutIcon/> } className={ 'h-8 w-9/12' }>Log out</Button>
+					<Button startIcon={ <InfoIcon/> } className={ 'h-8 w-9/12' }>About</Button>
 				</div>
 				<div className={ 'flex h-1/6 w-full justify-center' }>
 					<Button className={ 'Profile-button-wrap w-full h-full' } href={ '/' }>
