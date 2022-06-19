@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import { blue } from '@mui/material/colors';
+import {useNavigate} from "react-router-dom";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
 	'& .MuiBadge-badge': {
@@ -40,12 +41,15 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Profile: React.FC<ProfileProps> = ({}) => {
 	const user = useAppSelector(state => state.userState.user);
-	
+	const navigate = useNavigate();
+
+	const handleOnClick = () => navigate('/');
+
 	return (
 		<>
 			<div className={ 'profile flex flex-col h-full w-full' }>
 				<div className={ 'flex h-1/6 w-full justify-center align-center' }>
-					<Button className={ 'w-full h-full' } href={ '/' }>
+					<Button className={ 'w-full h-full' } onClick={handleOnClick}>
 						<img src={ logoSrc } alt={ 'wired' } style={ { width: '48px', height: '48px' } }/>
 					</Button>
 				</div>
@@ -57,7 +61,7 @@ const Profile: React.FC<ProfileProps> = ({}) => {
 					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>5</Button>
 				</div>
 				<div className={ 'flex h-1/6 w-full justify-center' }>
-					<Button className={ 'profile-button-wrap w-full h-full' } href={ '/' }>
+					<Button className={ 'profile-button-wrap w-full h-full' }  onClick={handleOnClick}>
 						<div className={ 'profile-button' }>
 							<StyledBadge
 								overlap="circular"
@@ -65,13 +69,13 @@ const Profile: React.FC<ProfileProps> = ({}) => {
 								variant="dot"
 							>
 								<Avatar
-									alt={ user.name }
+									alt={ user?.username  }
 									src={ userSrc }
 									sx={ { width: 48, height: 48, bgcolor: blue[300] } }
 								/>
 							</StyledBadge>
 							<span className={ 'user-name' }>
-								{ user.name }
+								{ user?.firstName + ' ' + user?.lastName }
 							</span>
 						</div>
 					</Button>

@@ -15,12 +15,12 @@ const Chat: React.FC<ChatProps> = () => {
 		<div className={ 'wrapper h-screen max-h-screen' }>
 			<div className={ 'chat-header h-1/10 flex items-center justify-start border-b ' }>
 				<Avatar
-					alt={ chatUser.name }
+					alt={ chatUser.username }
 					src={ chatUserSrc }
 					sx={ { width: 48, height: 48, bgcolor: blue[300], display: 'inline-block', margin: '0 15px' } }
 				/>
 				<span>
-					{ chatUser.name } { chatUser.surname }
+					{ chatUser.firstName } { chatUser.lastName }
 				</span>
 			</div>
 			<TextArea/>

@@ -12,7 +12,7 @@ const InputField: React.FC<InputProps> = () => {
 	
 	const createMessage = (content: string): Message => {
 		return {
-			uid: user.UID,
+			uid: user?.UID || '',
 			content,
 			timestamp: Date.now(),
 			id: nanoid()

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { MessageProps } from './model';
 
 const Message: React.FC<MessageProps> = ({ uid, content, timestamp, id }) => {
-	const UUID = useAppSelector<string>(state => state.userState.user.UID);
+	const UUID = useAppSelector<string>(state => state.userState.user?.UID || '');
 	const isSent = uid === UUID;
 	
 	const date = new Date(timestamp);

@@ -2,12 +2,16 @@ import React, {ChangeEvent, useCallback, useState} from 'react';
 import {Box, Button, Input} from "@mui/material";
 import axios, {AxiosResponse} from "axios";
 import {API_URL} from "../../constants";
+import {useAppDispatch, useAppSelector} from "../../app/hooks";
+import {changeUser} from "../../features/user/userSlice";
+import User from "../../features/user/User";
 
 type Auth = {
     access_token: string;
 }
 
 const Login: React.FC = () => {
+    const dispatch = useAppDispatch();
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [token, setToken] = useState<string>('');
@@ -34,8 +38,9 @@ const Login: React.FC = () => {
                             Authorization: `Bearer ${result.data.access_token}`
                         }
                     };
-                    console.log(result);
                     const t = await axios.get(API_URL + 'profile', config);
+                    dispatch(changeUser(t.data as User))
+                    console.log(t.data);
                 }
             } catch (e) {
                 console.error(e);

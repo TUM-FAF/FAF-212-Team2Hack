@@ -1,9 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-import User from '../user/User';
-import users from '../user/Users.mock';
+import User from '../user/User'
 
 const initialState: { user: User } = {
-	user: users[1]
+	user: {
+		UID: '123',
+		firstName: 'alex',
+		lastName: 'dobrojan',
+		profileImage: null,
+		password: '12345',
+		description: '',
+		university: '',
+		school: '',
+		clubs: [],
+		username: 'warek',
+		connections: []
+	}
 };
 
 const userSlice = createSlice({
