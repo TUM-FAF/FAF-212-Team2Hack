@@ -9,7 +9,7 @@ import {
     HttpCode,
     HttpStatus,
     UseInterceptors,
-    UploadedFile,
+    UploadedFile, UseGuards,
 } from '@nestjs/common';
 import {UsersService} from './users.service';
 import {CreateUserDto} from './dto/create-user.dto';
@@ -19,6 +19,7 @@ import {FileInterceptor} from "@nestjs/platform-express";
 import {diskStorage} from 'multer'
 import path from "path";
 import {v4 as uuidv4} from 'uuid'
+import {JwtAuthGuard} from "../auth/jwt-auth.guard";
 
 
 export const storage = {
@@ -33,7 +34,7 @@ export const storage = {
     })
 }
 
-
+@UseGuards(JwtAuthGuard)
 @Controller('users')
 export class UsersController {
     constructor(private readonly usersService: UsersService) {
