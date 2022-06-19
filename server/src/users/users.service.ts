@@ -1,25 +1,27 @@
-import {Injectable} from '@nestjs/common';
+import {Injectable, Param} from '@nestjs/common';
 import {CreateUserDto} from './dto/create-user.dto';
 import {UpdateUserDto} from './dto/update-user.dto';
 import {InjectRepository} from "@nestjs/typeorm";
 import {User} from "./entities/user.entity";
 import {Repository, UpdateResult} from "typeorm";
+import {SuggestionsType} from "./users.controller";
 
 @Injectable()
 export class UsersService {
     constructor(@InjectRepository(User) private usersRepository: Repository<User>) {
     }
 
-    async create(createUserDto: CreateUserDto): Promise<void> {
-        await this.usersRepository.save(createUserDto);
+    async create(createUserDto: CreateUserDto): Promise<User> {
+       return await this.usersRepository.save(createUserDto);
     }
 
-    async findAll(user: User): Promise<User[]> {
+    async findAll(username: string, university: string, school: string): Promise<User[]> {
         const query = this.usersRepository.createQueryBuilder('user')
             .where('user.username != :username AND (user.university = :university OR user.school = :school)', {
-                username: user.username, university: user.university,
-                school: user.school
+                username: username, university: university,
+                school: school
             });
+        console.log(await query.getMany())
         return await query.getMany();
     }
 

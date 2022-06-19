@@ -9,7 +9,7 @@ import {
     HttpCode,
     HttpStatus,
     UseInterceptors,
-    UploadedFile, UseGuards,
+    UploadedFile, UseGuards, Query,
 } from '@nestjs/common';
 import {UsersService} from './users.service';
 import {CreateUserDto} from './dto/create-user.dto';
@@ -22,6 +22,11 @@ import {v4 as uuidv4} from 'uuid'
 import {JwtAuthGuard} from "../auth/jwt-auth.guard";
 import {User} from "./entities/user.entity";
 
+export type SuggestionsType = {
+    university: string;
+    school: string;
+    username: string;
+}
 
 export const storage = {
     storage: diskStorage({
@@ -42,14 +47,15 @@ export class UsersController {
 
     @HttpCode(HttpStatus.CREATED)
     @Post()
-    async create(@Body() createUserDto: CreateUserDto): Promise<void> {
-        await this.usersService.create(createUserDto);
+    async create(@Body() createUserDto: CreateUserDto): Promise<User> {
+       return await this.usersService.create(createUserDto);
     }
 
     @UseGuards(JwtAuthGuard)
-    @Get('suggestions')
-    findAll(@Body() user: User) {
-        return this.usersService.findAll(user);
+    @Get('suggestions/?')
+    findAll(@Query('university') university: string,@Query('school') school: string, @Query('username') username: string,) {
+        console.log(username)
+        return this.usersService.findAll(username, university, school);
     }
 
     @UseGuards(JwtAuthGuard)
@@ -74,7 +80,7 @@ export class UsersController {
     @Post('upload')
     @UseInterceptors(FileInterceptor('file', storage))
     uploadPicture(@UploadedFile() file): Observable<Object> {
-      // return this.usersService.update()
+        // return this.usersService.update()
         return of({imagePath: file.filename});
     }
 }

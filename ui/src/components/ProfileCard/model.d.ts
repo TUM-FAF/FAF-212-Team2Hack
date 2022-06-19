@@ -1,10 +1,10 @@
 export interface Match {
-    name: string;
-    surname: string;
-    picture: string;
+    firstName: string;
+    lastName: string;
+    // picture: string;
     description: string;
-    mutualConnections: number;
-    mutualClubs: string[];
+    // mutualConnections: number;
+    // mutualClubs: string[];
 }
 
 interface ProfileCardProps {

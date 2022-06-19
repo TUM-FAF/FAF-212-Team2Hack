@@ -5,14 +5,19 @@ import { API_URL } from '../../../constants';
 import axios from 'axios';
 import { changeUser } from '../../../features/user/userSlice';
 import { useAppDispatch } from '../../../app/hooks';
+import {useNavigate} from "react-router-dom";
 
 const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, username, password }) => {
 	const dispatch = useAppDispatch();
 	const [school, setSchool] = useState<string>('');
 	const [university, setUniversity] = useState<string>('');
-	const [clubs, setClubs] = useState<string>('');
+	const [clubs, setClubs] = useState<string[]>(['']);
 	const [description, setDescription] = useState<string>('');
-	
+
+	const navigate = useNavigate();
+
+	const handleRegisterSuccess = () => navigate('')
+
 	const handleUniChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		setUniversity(e.target.value);
 	};
@@ -22,7 +27,7 @@ const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, us
 	};
 	
 	const handleClubsChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		setClubs(e.target.value);
+		setClubs([e.target.value]);
 	};
 	
 	const handleDescriptionChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -35,10 +40,13 @@ const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, us
 				firstName, lastName, username, description,
 				password, school, university, clubs, connections: []
 			});
+
+			console.log(result)
 			
 			if (result.data.username) {
-				console.log(result.data);
+				console.log("res")
 				dispatch(changeUser(result.data as User));
+				handleRegisterSuccess()
 			}
 		} catch (e) {
 			console.error(e);
@@ -53,7 +61,7 @@ const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, us
 				<Input placeholder={ 'UNIVERSITY' } value={ university } onChange={ handleUniChange }/>
 				<Input placeholder={ 'CLUBS' } value={ clubs } onChange={ handleClubsChange }/>
 				<Input placeholder={ 'ABOUT' } value={ description } onChange={ handleDescriptionChange }/>
-				<Button onClick={ handleRegistration }>Send</Button>
+				<Button onClick={ handleRegistration } >Sign up</Button>
 			</Box>
 		</div>
 	);

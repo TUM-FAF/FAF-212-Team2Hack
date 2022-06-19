@@ -11,6 +11,7 @@ const App: React.FC = () => {
     const messagesStatus = useAppSelector<'rejected' | 'idle' | 'pending' | 'fulfilled'>(state => state.messageState.status);
     const dispatch = useAppDispatch();
     const user = useAppSelector(state => state.userState.user);
+    console.log(user);
     // useEffect(() => {
     // 	if (messagesStatus === 'idle')
     // 		dispatch(fetchMessages());
