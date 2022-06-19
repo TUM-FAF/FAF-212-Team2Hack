@@ -25,7 +25,7 @@ const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, us
 		setClubs(e.target.value);
 	};
 	
-	const handleAboutChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+	const handleDescriptionChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		setDescription(e.target.value);
 	};
 	
@@ -46,13 +46,12 @@ const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, us
 	};
 	
 	return (
-		<div className={'w-screen h-screen flex justify-center items-center'}>
+		<div className={'w-screen h-screen flex justify-center items-center'} style={ { backgroundColor: '#ffffff'}}>
 			<Box display="flex" flexDirection="column" gap="4px">
 				<Input placeholder={ 'SCHOOL' } value={ school } onChange={ handleSchoolChange }/>
 				<Input placeholder={ 'UNIVERSITY' } value={ university } onChange={ handleUniChange }/>
 				<Input placeholder={ 'CLUBS' } value={ clubs } onChange={ handleClubsChange }/>
-				<Input placeholder={ 'ABOUT' } value={ university } onChange={ handleAboutChange }/>
-				{/*<Input type={'file'} />*/ }
+				<Input placeholder={ 'ABOUT' } value={ description } onChange={ handleDescriptionChange }/>
 				<Button onClick={ handleRegistration }>Send</Button>
 			</Box>
 		</div>

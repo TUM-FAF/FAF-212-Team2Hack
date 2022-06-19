@@ -5,6 +5,11 @@ import userSrc from '../../assets/images/user.svg';
 import { useAppSelector } from '../../app/hooks';
 import logoSrc from '../../assets/images/logo.png';
 import DeleteIcon from '@mui/icons-material/Delete';
+import GroupIcon from '@mui/icons-material/Group';
+import LogoutIcon from '@mui/icons-material/Logout';
+import SettingsIcon from '@mui/icons-material/Settings';
+import InfoIcon from '@mui/icons-material/Info';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import { blue } from '@mui/material/colors';
@@ -54,11 +59,11 @@ const Profile: React.FC<ProfileProps> = ({}) => {
 					</Button>
 				</div>
 				<div className={ 'flex h-4/6 w-full flex-col items-center justify-evenly' }>
-					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>1</Button>
-					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>2</Button>
-					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>3</Button>
-					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>4</Button>
-					<Button startIcon={ <DeleteIcon/> } className={ 'h-8 w-9/12' }>5</Button>
+					<Button startIcon={ <GroupIcon/> } className={ 'h-8 w-9/12' }>Friends</Button>
+					<Button startIcon={ <LogoutIcon/> } className={ 'h-8 w-9/12' }>Log out</Button>
+					<Button startIcon={ <ChatBubbleOutlineIcon/> } className={ 'h-8 w-9/12' }>Feed</Button>
+					<Button startIcon={ <InfoIcon/> } className={ 'h-8 w-9/12' }>About</Button>
+					<Button startIcon={ <SettingsIcon/> } className={ 'h-8 w-9/12' }>Settings</Button>
 				</div>
 				<div className={ 'flex h-1/6 w-full justify-center' }>
 					<Button className={ 'profile-button-wrap w-full h-full' }  onClick={handleOnClick}>
