@@ -7,7 +7,7 @@ import { changeUser } from '../../../features/user/userSlice';
 import { useAppDispatch } from '../../../app/hooks';
 
 const InfoSignupForm: React.FC<InfoSignupFormProps> = ({ firstName, lastName, username, password }) => {
-	document.querySelector<HTMLButtonElement>('.btn-1').hidden = 'true';
+	document.querySelector<HTMLButtonElement>('.btn-1')?.hidden = 'true';
 	const dispatch = useAppDispatch();
 	const [school, setSchool] = useState<string>('');
 	const [university, setUniversity] = useState<string>('');
