@@ -22,6 +22,10 @@ export class UsersService {
         return this.usersRepository.findOne({where: {username: username}});
     }
 
+    findById(id: string):  Promise<User> {
+        return this.usersRepository.findOne({where: {uid: id}});
+    }
+
     update(id: string, payload: UpdateUserDto): Promise<UpdateResult> {
         return this.usersRepository.update(id, payload);
     }
